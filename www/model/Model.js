@@ -1,11 +1,11 @@
 var knex = require('../database/config');
 
 class Model {
-  constructor(tableName) {
-    this.tableName = tableName;
+  static get tableName() {
+    return null;
   }
 
-  query() {
+  static query() {
     return knex(this.tableName);
   }
 }

@@ -1,8 +1,8 @@
 var Model = require('./Model');
 
 class Visitor extends Model {
-  constructor() {
-    super('visitors'); 
+  static get tableName() {
+    return 'visitors';
   }
 }
 
