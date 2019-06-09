@@ -1,1 +1,3 @@
 node_modules
+knexfile.js
+routes/myadmin.js

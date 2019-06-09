@@ -15,4 +15,4 @@ RUN npm config set registry http://registry.npm.taobao.org/ && npm install
 # Bundle app source
 COPY . .
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "dev" ]

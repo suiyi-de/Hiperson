@@ -20,6 +20,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 19082:8080
+
 volumes:
   hiperson: 
     driver: local
