@@ -1,4 +1,4 @@
-var knex = require('../database/config');
+var knex = require('./queryBuilder');
 
 class Model {
   static get tableName() {

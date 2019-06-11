@@ -1,5 +1,6 @@
 var Koa = require('koa');
 var apiRouter = require('./routes/api');
+var bodyParser = require('koa-bodyparser');
 
 const app = new Koa();
 
@@ -9,6 +10,7 @@ app.use(async (ctx, next) => {
   ctx.set("Access-Control-Allow-Headers", "x-requested-with, accept, origin, content-type");
   await next();
 });
+app.use(bodyParser());
 
 app.use(apiRouter.routes())
 app.use(apiRouter.allowedMethods())

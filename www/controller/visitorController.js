@@ -1,7 +1,11 @@
 var Visitor = require('../model/Visitor');
+var Controller = require('./Controller');
+class visitorController extends Controller {
+  static get model() {
+    return Visitor;
+  }
 
-module.exports =  {
-  async index(ctx) {
+  static async index(ctx) {
     let ip = ctx.ip.substr(7); // remove '::ffff:'
     let visitor = await Visitor.find({
       ip: ip
@@ -26,3 +30,5 @@ module.exports =  {
     };
   }
 }
+
+module.exports = visitorController;
