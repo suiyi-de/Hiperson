@@ -17,6 +17,9 @@ class Controller {
       case 'PUT':
         await this.update(ctx);
         break;
+      case 'DELETE':
+        await this.delete(ctx);
+        break;
     }
   }
 
@@ -50,6 +53,21 @@ class Controller {
         ctx.body = {
           status: 'success',
           data: model
+        }
+    } catch (err) {
+      ctx.body = {
+        status: 'failed',
+        msg: err
+      }
+    }
+  }
+
+  static async delete(ctx) {
+    try {
+        let condition = {id: ctx.params.id};
+        await this.model.query().where(condition).delete();
+        ctx.body = {
+          status: 'success'
         }
     } catch (err) {
       ctx.body = {
