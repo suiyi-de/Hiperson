@@ -27,12 +27,8 @@ http.createServer((req, res) => {
     res.end();
 }).listen(80);
 httpsServer = https.createServer({
-  key: fs.readFileSync('./ssl/server.key', 'utf8'),
-  cert: fs.readFileSync('./ssl/server.crt', 'utf8'),
-  ca: [
-    fs.readFileSync('./ssl/gd_bundle_01.crt', 'utf8'),
-    fs.readFileSync('./ssl/gd_bundle_02.crt', 'utf8'),
-    fs.readFileSync('./ssl/gd_bundle_03.crt', 'utf8')
-  ]
+  key: fs.readFileSync('./ssl/private.key', 'utf8'),
+  cert: fs.readFileSync('./ssl/cert.crt', 'utf8'),
+  ca: fs.readFileSync('./ssl/ca.crt', 'utf8')
 }, app.callback()).listen(443);
 
