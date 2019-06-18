@@ -26,7 +26,7 @@ http.createServer((req, res) => {
     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();
 }).listen(80);
-httpsServer = https.createServer({
+https.createServer({
   key: fs.readFileSync('./ssl/server.key', 'utf8'),
   cert: fs.readFileSync('./ssl/server.crt', 'utf8'),
   ca: [
