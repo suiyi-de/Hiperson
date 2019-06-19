@@ -12,7 +12,7 @@ exports.up = function(knex, Promise) {
     table.string('link');
     table.string('album');
     table.string('genre');
-    table.string('notes');
+    table.text('notes');
     table.timestamps(true, true);
   }).createTable('articles', function (table) {
     table.increments();
