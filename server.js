@@ -14,11 +14,16 @@ const app = new Koa();
 //   ctx.set("Access-Control-Allow-Headers", "x-requested-with, accept, origin, content-type");
 //   await next();
 // });
-app.use(serve('./public'));
 app.use(bodyParser());
+app.use(serve('./public'));
 
 app.use(apiRouter.routes())
 app.use(apiRouter.allowedMethods())
+
+app.use((ctx) => {
+  ctx.type = 'html';
+  ctx.body = fs.readFileSync('./public/index.html');
+});
 
 // app.listen(80);
 
