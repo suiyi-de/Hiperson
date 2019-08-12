@@ -17,27 +17,27 @@ const app = new Koa();
 app.use(bodyParser());
 app.use(serve('./public'));
 
-app.use(apiRouter.routes())
-app.use(apiRouter.allowedMethods())
+app.use(apiRouter.routes());
+app.use(apiRouter.allowedMethods());
 
 app.use((ctx) => {
   ctx.type = 'html';
   ctx.body = fs.readFileSync('./public/index.html');
 });
 
-// app.listen(80);
+app.listen(80);
 
-http.createServer((req, res) => {
-    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-    res.end();
-}).listen(80);
-https.createServer({
-  key: fs.readFileSync('./ssl/server.key', 'utf8'),
-  cert: fs.readFileSync('./ssl/server.crt', 'utf8'),
-  ca: [
-    fs.readFileSync('./ssl/gd_bundle_01.crt', 'utf8'),
-    fs.readFileSync('./ssl/gd_bundle_02.crt', 'utf8'),
-    fs.readFileSync('./ssl/gd_bundle_03.crt', 'utf8')
-  ]
-}, app.callback()).listen(443);
+// http.createServer((req, res) => {
+//     res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
+//     res.end();
+// }).listen(80);
+// https.createServer({
+//   key: fs.readFileSync('./ssl/server.key', 'utf8'),
+//   cert: fs.readFileSync('./ssl/server.crt', 'utf8'),
+//   ca: [
+//     fs.readFileSync('./ssl/gd_bundle_01.crt', 'utf8'),
+//     fs.readFileSync('./ssl/gd_bundle_02.crt', 'utf8'),
+//     fs.readFileSync('./ssl/gd_bundle_03.crt', 'utf8')
+//   ]
+// }, app.callback()).listen(443);
 

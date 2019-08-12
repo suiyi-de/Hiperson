@@ -1,5 +1,6 @@
 var Visitor = require('../model/Visitor');
 var Controller = require('./Controller');
+
 class visitorController extends Controller {
   static get model() {
     return Visitor;
